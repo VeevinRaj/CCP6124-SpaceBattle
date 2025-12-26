@@ -1,5 +1,6 @@
 #include "Ship.h"
 #include <algorithm>
+#include <string>
 
 Ship::Ship(std::string id, std::string name, int hp,
            int pilots, int gunners, int torpedoHandlers,
@@ -176,4 +177,58 @@ RogoatuskanShip::RogoatuskanShip(std::string id, std::string name, int hp,
 std::string RogoatuskanShip::getFaction() const
 {
     return "Rogoatuskan";
+}
+
+Jager::Jager(std::string id, std::string name)
+    : RogoatuskanShip(id, name,
+                      112,
+                      1,
+                      1,
+                      0,
+                      101,
+                      0,
+                      1,
+                      0,
+                      0.24,
+                      0.05) {}
+
+std::string Jager::getType() const
+{
+    return "Jager";
+}
+
+Kreuzer::Kreuzer(std::string id, std::string name)
+    : RogoatuskanShip(id, name,
+                      212,
+                      1,
+                      2,
+                      0,
+                      132,
+                      0,
+                      2,
+                      0,
+                      0.29,
+                      0.10) {}
+
+std::string Kreuzer::getType() const
+{
+    return "Kreuzer";
+}
+
+Fregatte::Fregatte(std::string id, std::string name)
+    : RogoatuskanShip(id, name,
+                      1143,
+                      2,
+                      11,
+                      5,
+                      159,
+                      282,
+                      11,
+                      5,
+                      0.60,
+                      0.30) {}
+
+std::string Fregatte::getType() const
+{
+    return "Fregatte";
 }

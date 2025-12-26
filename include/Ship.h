@@ -1,10 +1,10 @@
-#ifdef SHIP_H
+#ifndef SHIP_H
 #define SHIP_H
 
 #include <string>
 #include <vector>
 
-class ship
+class Ship
 {
 private:
     std::string id;
@@ -26,12 +26,12 @@ private:
     bool isZapezoid;
 
 public:
-    ship(std::string id, std::string name, int hp,
+    Ship(std::string id, std::string name, int hp,
          int pilots, int gunners, int torpedoHandlers,
          int lcPower, int tpPower, int lcCount, int tpCount,
          double lcHitChance, double tpHitChance, bool isZap);
-    ~ship();
-    = default;
+
+    virtual ~Ship() = default;
 
     virtual std::string getFaction() const = 0;
     virtual std::string getType() const = 0;
@@ -66,10 +66,9 @@ public:
     void reset();
 };
 
-class ZapezoidShip : public ship
-
+class ZapezoidShip : public Ship
 {
-private:
+protected:
     ZapezoidShip(std::string id, std::string name, int hp,
                  int pilots, int gunners, int torpedoHandlers,
                  int lcPower, int tpPower, int lcCount, int tpCount,
@@ -100,9 +99,9 @@ public:
     std::string getType() const override;
 };
 
-class Rogoatuskanship : public ship
+class RogoatuskanShip : public Ship
 {
-private:
+protected:
     RogoatuskanShip(std::string id, std::string name, int hp,
                     int pilots, int gunners, int torpedoHandlers,
                     int lcPower, int tpPower, int lcCount, int tpCount,

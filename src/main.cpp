@@ -9,22 +9,24 @@
 #include <ctime>
 using namespace std;
 
-class Ship;               
-class Weapon;             
-class CrewMember;         
+class Ship;
+class Weapon;
+class CrewMember;
 
-vector<Ship*> loadShips(string file);      
-vector<CrewMember*> loadCrew(string file); 
+vector<Ship *> loadShips(string file);
+vector<CrewMember *> loadCrew(string file);
 
-void assignCrewToShips(vector<Ship*>& ships, vector<CrewMember*>& crew); 
-void startBattle(vector<Ship*>& zShips, vector<Ship*>& rShips);          
+void assignCrewToShips(vector<Ship *> &ships, vector<CrewMember *> &crew);
+void startBattle(vector<Ship *> &zShips, vector<Ship *> &rShips);
 
-ostream& operator<<(ostream& os, const Ship& s);
+ostream &operator<<(ostream &os, const Ship &s);
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[])
+{
 
-    if (argc != 5) {
-        cerr << "Usage: " << argv[0] 
+    if (argc != 5)
+    {
+        cerr << "Usage: " << argv[0]
              << " <ZapezoidShips.csv> <ZapezoidCrew.csv> <RogoatuskanShips.csv> <RogoatuskanCrew.csv>\n";
         return 1;
     }
@@ -37,11 +39,11 @@ int main(int argc, char* argv[]) {
     cout << "\n=== FOMALHAUT SPACE BATTLE SIMULATION ===\n";
     cout << "Loading fleet data...\n";
 
-    vector<Ship*> zShips = loadShips(zShipFile);
-    vector<CrewMember*> zCrew = loadCrew(zCrewFile);
+    vector<Ship *> zShips = loadShips(zShipFile);
+    vector<CrewMember *> zCrew = loadCrew(zCrewFile);
 
-    vector<Ship*> rShips = loadShips(rShipFile);
-    vector<CrewMember*> rCrew = loadCrew(rCrewFile);
+    vector<Ship *> rShips = loadShips(rShipFile);
+    vector<CrewMember *> rCrew = loadCrew(rCrewFile);
 
     assignCrewToShips(zShips, zCrew);
     assignCrewToShips(rShips, rCrew);
@@ -49,16 +51,21 @@ int main(int argc, char* argv[]) {
     cout << "\nStarting battle...\n";
     startBattle(zShips, rShips);
 
-    for(auto s : zShips) delete s;
-    for(auto s : rShips) delete s;
+    for (auto s : zShips)
+        delete s;
+    for (auto s : rShips)
+        delete s;
 
-    for(auto c : zCrew) delete c;
-    for(auto c : rCrew) delete c;
+    for (auto c : zCrew)
+        delete c;
+    for (auto c : rCrew)
+        delete c;
 
     cout << "\nMemory released. Program completed.\n";
     return 0;
 }
 
-ostream& operator<<(ostream& os, const Ship& s) {
+ostream &operator<<(ostream &os, const Ship &s)
+{
     return os;
 }

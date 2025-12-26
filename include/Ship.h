@@ -99,3 +99,38 @@ public:
     Corazzata(std::string id, std::string name);
     std::string getType() const override;
 };
+
+class Rogoatuskanship : public ship
+{
+private:
+    RogoatuskanShip(std::string id, std::string name, int hp,
+                    int pilots, int gunners, int torpedoHandlers,
+                    int lcPower, int tpPower, int lcCount, int tpCount,
+                    double lcHitChance, double tpHitChance);
+
+public:
+    std::string getFaction() const override;
+};
+
+class Jager : public RogoatuskanShip
+{
+public:
+    Jager(std::string id, std::string name);
+    std::string getType() const override;
+};
+
+class Kreuzer : public RogoatuskanShip
+{
+public:
+    Kreuzer(std::string id, std::string name);
+    std::string getType() const override;
+};
+
+class Fregatte : public RogoatuskanShip
+{
+public:
+    Fregatte(std::string id, std::string name);
+    std::string getType() const override;
+};
+
+#endif
